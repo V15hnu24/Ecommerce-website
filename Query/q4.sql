@@ -1,2 +1,2 @@
 delete from product_table
-where Product_Id = 54;
+where product_Id = 54;

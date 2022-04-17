@@ -1,4 +1,4 @@
-select Product_Id, Product_name, Price, city_code, type_id, 'bike' as category
+select product_id, product_name, price, city_code, type_id, 'bike' as category
 from product_table
 where type_id = (
     select type_Id

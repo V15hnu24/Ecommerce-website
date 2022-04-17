@@ -1,7 +1,7 @@
-select price,Product_name
+select price,product_name
 from product_table
-where Product_Id IN (
-	select description_table.Product_Id as dp
+where product_id IN (
+	select description_table.product_id as dp
     from description_table
-    where Long_description Like '"Edition : Paperback%'
+    where long_description Like 'Edition : Paperback%'
     );
