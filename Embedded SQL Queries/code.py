@@ -7,7 +7,6 @@ mydb = mysql.connector.connect(host="localhost",user="root",passwd="vishnu7879",
 mycursor = mydb.cursor()
 
 #1
-
 ''' 
 select state_name, count(*) as count
 from area_table
@@ -22,6 +21,7 @@ mycursor.execute("select state_name, count(*) as count from area_table where are
 result = mycursor.fetchall()
 print(result)
 
+#2
 '''
 drop table statewise_products;
 create table statewise_products(
@@ -32,7 +32,6 @@ create table statewise_products(
 );
 '''
 
-#2
 mycursor.execute("drop table statewise_products;")
 mycursor.execute(" create table statewise_products( state_code integer not null AUTO_INCREMENT,state varchar(125), total_products integer,primary key (state_code));")
 
@@ -48,3 +47,26 @@ mycursor.execute("Select * from statewise_products")
 result2 = mycursor.fetchall()
 
 print(result2)
+
+#3
+'''
+select customer_name, customer_mobile, count(*)
+from user_details
+where user_id in (select seller_id
+				from product_table
+				where product_id in ( select product_id
+									  from sold_product)
+				)
+group by customer_name
+having count(*) > 0
+order by customer_name
+'''
+
+mycursor.execute("select customer_name, customer_mobile, count(*) from user_details where user_id in (select seller_id	from product_table where product_id in ( select product_id  from sold_product)) group by customer_name having count(*) > 0 order by customer_name")
+
+result3 = mycursor.fetchall()
+
+print(result3)
+
+
+#4
