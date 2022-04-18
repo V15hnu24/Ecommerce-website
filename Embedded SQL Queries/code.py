@@ -1,4 +1,6 @@
+import re
 from sqlite3 import connect
+from unicodedata import category
 from unittest import result
 import mysql.connector
 
@@ -31,6 +33,7 @@ create table statewise_products(
     ,primary key (state_code)
 );
 '''
+#Inserting the data for the table created
 
 mycursor.execute("drop table statewise_products;")
 mycursor.execute(" create table statewise_products( state_code integer not null AUTO_INCREMENT,state varchar(125), total_products integer,primary key (state_code));")
@@ -40,7 +43,7 @@ temp = "INSERT INTO statewise_products (state,total_products) values"
 for i in range(len(result)):
     mycursor.execute(temp + str(result[i])+";")
 
-mydb.commit()
+
 
 mycursor.execute("Select * from statewise_products")
 
@@ -70,3 +73,40 @@ print(result3)
 
 
 #4
+
+'''
+select customer_name, customer_mobile, count(*) as count
+from user_details
+where user_id in (select buyer_id
+				from sold_product)
+group by customer_name
+having count > 0
+order by count desc
+'''
+
+mycursor.execute("select customer_name, customer_mobile, count(*) as count from user_details where user_id in (select buyer_id from sold_product) group by customer_name having count > 0 order by count desc;")
+
+result4 = mycursor.fetchall()
+
+print(result4)
+
+#5
+
+''' 
+SET FOREIGN_KEY_CHECKS = 0;
+delete from product_table
+where product_id = 3 and type_id = (select type_id
+				from type_table
+                where name = 'bike');
+'''
+mycursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
+category = 'bike'
+num = '2'
+mycursor.execute(" delete from product_table where product_id = "+num+" and type_id = (select type_id from type_table where name = 'bike');")
+mycursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
+
+mycursor.execute("select * from product_table;")
+
+result5 = mycursor.fetchall()
+
+print(result5)
