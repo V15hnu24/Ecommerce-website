@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='7061'
-app.config['MYSQL_DB']='olx'
+app.config['MYSQL_PASSWORD']='vishnu7879'
+app.config['MYSQL_DB']='online_selling'
 
 mysql=MySQL(app)
 
@@ -21,7 +21,11 @@ mysql=MySQL(app)
 def template():
     if request.method=='POST':
         userDetails=request.form
-        userid=userDetails['userid']
+        cur=mysql.connection.cursor()
+        cur.execute("select count(*) from user_details")
+        result = cur.fetchall()
+        userid=result[0][0]+1
+
         customer_name=userDetails["customer_name"]
         customer_mobile=userDetails["customer_mobile"]
         customer_email=userDetails['customer_email']
@@ -29,12 +33,14 @@ def template():
         city_name=userDetails['city_name']
         state_name=userDetails['state_name']
         age=userDetails['age']
+        
         cur=mysql.connection.cursor()
         cur.execute("INSERT INTO user_details(user_id,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",(userid,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age))
         mysql.connection.commit()
         cur.close()
         return redirect('/homepage')
     return render_template('index.html')
+
 @app.route('/users')
 def users():
     cur=mysql.connection.cursor()
