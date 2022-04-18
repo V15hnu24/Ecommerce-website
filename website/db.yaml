@@ -1,0 +1,6 @@
+mysql_host; 'localhost'
+mysql_user: 'root'
+
+mysql_password:'7061'
+
+mysql_db: 'olx'
