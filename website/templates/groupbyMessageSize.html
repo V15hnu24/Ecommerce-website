@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Length of message</th>
+        <th scope="col">Number </th>
+        
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for user in userDetails %}
+        <tr>
+            <td>{{user[0]}} </td>
+            <td>{{user[1]}} </td>
+          
+            
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          {searchable: false},
+          {orderable: false, searchable: false},
+         
+        ],
+      });
+    });
+  </script>
+{% endblock %}
