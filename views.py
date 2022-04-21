@@ -7,7 +7,7 @@ def SeeViews():
     query="SHOW FULL TABLES IN olx_final WHERE TABLE_TYPE LIKE 'VIEW';"
     mycursor.execute(query)
     myresult = mycursor.fetchall()
-    print('Views are')
+    print('Views are as follow:')
     for x in myresult:
         print(x)
     print()
