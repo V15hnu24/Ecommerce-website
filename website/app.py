@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=`db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='7061'
-app.config['MYSQL_DB']='olx_final'
+app.config['MYSQL_PASSWORD']='vishnu7879'
+app.config['MYSQL_DB']='online_selling'
 
 mysql=MySQL(app)
 
@@ -38,8 +38,9 @@ def template():
         cur.execute("INSERT INTO user_details(user_id,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",(userid,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age))
         mysql.connection.commit()
         cur.close()
-        return redirect('/homepage')
+        return redirect('/explore')
     return render_template('index.html')
+
 @app.route('/search')
 def search():
     cur=mysql.connection.cursor()
@@ -47,6 +48,7 @@ def search():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('search.html', userDetails=userDetails)
+
 @app.route('/users')
 def users():
     cur=mysql.connection.cursor()
@@ -62,6 +64,7 @@ def Homepage():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('homepage.html', userDetails=userDetails)
+
 @app.route('/sellerSALLTypeProducts')
 def sellerSALLTypeProducts():
     cur=mysql.connection.cursor()
@@ -69,6 +72,7 @@ def sellerSALLTypeProducts():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('sellerSALLTypeProducts.html', userDetails=userDetails)
+
 @app.route('/AskPandSellPdiff1000')   
 def AskPandSellPdiff1000():
     cur=mysql.connection.cursor()
@@ -76,6 +80,7 @@ def AskPandSellPdiff1000():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('AskPandSellPdiff1000.html', userDetails=userDetails)
+
 @app.route('/AvgPriOBikeIneveryCities')
 def AvgPriOBikeIneveryCities():
     cur=mysql.connection.cursor()
@@ -83,6 +88,7 @@ def AvgPriOBikeIneveryCities():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('AvgPriOBikeIneveryCities.html', userDetails=userDetails)
+
 @app.route('/ThoseWhoMEssegedMoreThan1')
 def ThoseWhoMEssegedMoreThan1():
     cur=mysql.connection.cursor()
@@ -90,6 +96,7 @@ def ThoseWhoMEssegedMoreThan1():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('ThoseWhoMEssegedMoreThan1.html', userDetails=userDetails)
+
 @app.route('/bajajBikeInkarnataka')
 def bajajBikeInkarnataka():
     cur=mysql.connection.cursor()
@@ -97,6 +104,7 @@ def bajajBikeInkarnataka():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bajajBikeInkarnataka.html', userDetails=userDetails)
+
 @app.route('/soldAmountAndBoughtAmount')
 def soldAmountAndBoughtAmount():
     cur=mysql.connection.cursor()
@@ -104,6 +112,7 @@ def soldAmountAndBoughtAmount():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('soldAmountAndBoughtAmount.html', userDetails=userDetails)
+
 @app.route('/ChatOfUSer9And1ondate')
 def ChatOfUSer9And1ondate():
     cur=mysql.connection.cursor()
@@ -119,6 +128,7 @@ def groupingUSerByage():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('groupingUSerByage.html', userDetails=userDetails)
+
 @app.route('/groupbyMessageSize')
 def groupbyMessageSize():
     cur=mysql.connection.cursor()
@@ -126,6 +136,7 @@ def groupbyMessageSize():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('groupbyMessageSize.html', userDetails=userDetails)
+
 @app.route('/ThoseWhoAreSellerAndBuyer')
 def ThoseWhoAreSellerAndBuyer():
     cur=mysql.connection.cursor()
@@ -133,6 +144,7 @@ def ThoseWhoAreSellerAndBuyer():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('ThoseWhoAreSellerAndBuyer.html', userDetails=userDetails)
+
 @app.route('/bike')
 def bike():
     cur=mysql.connection.cursor()
@@ -148,6 +160,7 @@ def car():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+
 @app.route('/electronics')
 def electronics():
     cur=mysql.connection.cursor()
@@ -155,6 +168,7 @@ def electronics():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+
 @app.route('/books')
 def books():
     cur=mysql.connection.cursor()
@@ -162,6 +176,7 @@ def books():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+
 @app.route('/others')
 def others():
     cur=mysql.connection.cursor()
@@ -169,6 +184,6 @@ def others():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+
 if __name__=='__main__':
     app.run(debug=True)
-    
