@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=`db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='7061'
-app.config['MYSQL_DB']='olx_final'
+app.config['MYSQL_PASSWORD']='vishnu7879'
+app.config['MYSQL_DB']='online_selling'
 
 mysql=MySQL(app)
 
