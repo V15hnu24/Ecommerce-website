@@ -8,7 +8,6 @@ create user customer_3 identified by "qwerty@123";
 create user customer_4 identified by "asdf@1234";
 create user customer_5 identified by "zxcv@1234";
 create user owner_1 identified by "owner@123";
-GRANT TRIGGER ON table user_details to Manoj;
 grant select on * to owner_1;
 grant delete on * to owner_1;
 grant update on * to owner_1;
