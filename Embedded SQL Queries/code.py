@@ -3,8 +3,7 @@ from sqlite3 import connect
 from unicodedata import category
 from unittest import result
 import mysql.connector
-mydb = mysql.connector.connect(host="localhost",user="root",passwd="7061",auth_plugin ='mysql_native_password',database="olx_final")
-
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="7061" ,database = "olx_final")
 mycursor = mydb.cursor()
 
 #1

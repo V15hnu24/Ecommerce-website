@@ -4,8 +4,7 @@ from unicodedata import category
 from unittest import result
 import mysql.connector
 
-mydb = mysql.connector.connect(host="localhost",user="root",passwd="vishnu7879",auth_plugin ='mysql_native_password',database="online_selling")
-
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="7061" ,database = "olx_final")
 mycursor = mydb.cursor()
 
 #2
