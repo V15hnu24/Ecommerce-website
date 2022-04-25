@@ -1,5 +1,5 @@
 create user Manoj identified by "Manoj@123";
-create user  samriddh identified by "1234";
+create user  samriddhS identified by "1234";
 create user vishnu identified by "6789";
 create user varun identified by "Varun@123";
 create user customer_1 identified by "0123";
