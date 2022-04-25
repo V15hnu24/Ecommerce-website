@@ -4,12 +4,12 @@
   <table id="data" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">PId</th>
+        <th scope="col">UserId
+        <th scope="col"> Customer Name</th>
+        <th scope="col">Total Number of messages</th>
+
+       
         
-        <th scope="col">Price</th>
-        <th scope="col">CityCode</th>
-        <th scope="col">TypeId</th>
-        <th scope="col">SellerId</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +18,7 @@
             <td>{{user[0]}} </td>
             <td>{{user[1]}} </td>
             <td>{{user[2]}} </td>
-            <td>{{user[3]}} </td>
-            <td>{{user[4]}} </td>
-            
+            <td>{{user[3]}} </td>            
         </tr>
       {% endfor %}
     </tbody>
@@ -32,12 +30,10 @@
     $(document).ready(function () {
       $('#data').DataTable({
         columns: [
-          null,
-          {searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          {orderable: false, searchable: false},
-          null],
+          {searchable: true},
+          {orderable: true, searchable: false},
+          {orderable: true, searchable: false},
+        ],
       });
     });
   </script>

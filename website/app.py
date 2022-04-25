@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=`db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='vishnu7879'
-app.config['MYSQL_DB']='online_selling'
+app.config['MYSQL_PASSWORD']='7061'
+app.config['MYSQL_DB']='olx_final'
 
 mysql=MySQL(app)
 
@@ -190,6 +190,22 @@ def others():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+@app.route('/avgPriceOfDTypeOfPRoduct')
+def avgPriceOfDTypeOfPRoduct():
+    cur=mysql.connection.cursor()
+    resultVAlue=cur.execute("select T.type_id,T.name,AVG(P.price),Count(*) from type_table T join product_table P on P.type_id=T.type_id group by T.type_id order by T.type_id")
+    if resultVAlue>0:
+        userDetails=cur.fetchall()
+        return render_template('avgPriceOfDTypeOfPRoduct.html', userDetails=userDetails)
+@app.route('/NoofMessagesEachCustomerSent')
+def NoofMessagesEachCustomerSent():
+    cur=mysql.connection.cursor()
+    resultVAlue=cur.execute("select U.user_id, U.customer_name, Count(*) from user_details U join chat_table C on C.sender_id = U.user_id Group by  U.user_id order by U.user_id")
+    if resultVAlue>0:
+        userDetails=cur.fetchall()
+        return render_template('NoofMessagesEachCustomerSent.html', userDetails=userDetails)
+
+
 @app.route('/kolkata')
 def kolkata():
     cur=mysql.connection.cursor()
