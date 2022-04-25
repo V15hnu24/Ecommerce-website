@@ -35,3 +35,7 @@ grant select on table area_table to customer_1,customer_2,customer_3,customer_4,
 grant select on table type_table to customer_1,customer_2,customer_3,customer_4,customer_5;
 grant select on table product_table to customer_1,customer_2,customer_3,customer_4,customer_5;
 grant select on table category_sale to customer_1,customer_2,customer_3,customer_4,customer_5;
+grant create,select,update,delete,alter on table area_table to Manoj;
+grant create,select,update,delete,alter on table area_table to samriddh;
+grant create,select,update,delete,alter on table area_table to vishnu;
+grant create,select,update,delete,alter on table area_table to varun;
