@@ -39,3 +39,16 @@ grant create,select,update,delete,alter on table area_table to Manoj;
 grant create,select,update,delete,alter on table area_table to samriddh;
 grant create,select,update,delete,alter on table area_table to vishnu;
 grant create,select,update,delete,alter on table area_table to varun;
+grant create,select,update,delete,alter on table type_table to Manoj;
+grant create,select,update,delete,alter on table type_table to samriddh;
+grant create,select,update,delete,alter on table type_table to varun;
+grant create,select,update,delete,alter on table type_table to vishnu;
+grant create,select,update,delete,alter on table product_table to Manoj;
+grant create,select,update,delete,alter on table product_table to vishnu;
+grant create,select,update,delete,alter on table product_table to samriddh;
+grant create,select,update,delete,alter on table product_table to varun;
+grant create,select,update,delete,alter on table category_sale to Manoj;
+grant create,select,update,delete,alter on table category_sale to varun;
+grant create,select,update,delete,alter on table category_sale to samriddh;
+grant create,select,update,delete,alter on table category_sale to vishnu;
+
