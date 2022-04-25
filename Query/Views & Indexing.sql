@@ -14,7 +14,7 @@ create index Product_index on product_table (product_name);
 create index Area_index on product_table (city_code);
 show indexes from product_table;
 
-create view category_sale as select product_table.product_id,product_table.product_name,product_table.price,sold_product.buyer_id,sold_product.sell_price,product_table.type_id from product_table Inner join sold_product on sold_product.product_id=product_table.product_id;
+create view category_sale as select product_table.product_id,product_table.product_name,product_table.price as AskPrice,sold_product.buyer_id,sold_product.price as SoldPrice,product_table.type_id from product_table Inner join sold_product on sold_product.product_id=product_table.product_id;
 select * from category_sale where type_id='5';
 
 

@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=`db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='vishnu7879'
-app.config['MYSQL_DB']='online_selling'
+app.config['MYSQL_PASSWORD']='7061'
+app.config['MYSQL_DB']='olx_final'
 
 mysql=MySQL(app)
 
@@ -38,7 +38,7 @@ def template():
         cur.execute("INSERT INTO user_details(user_id,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",(userid,customer_name,customer_mobile,customer_email,gender,city_name,state_name,age))
         mysql.connection.commit()
         cur.close()
-        return redirect('/explore')
+        return redirect('/homepage')
     return render_template('index.html')
 
 @app.route('/search')
@@ -184,6 +184,13 @@ def others():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('bike.html', userDetails=userDetails)
+@app.route('/kolkata')
+def kolkata():
+    cur=mysql.connection.cursor()
+    resultVAlue=cur.execute("SELECT * FROM product_table where type_id=3")
+    if resultVAlue>0:
+        userDetails=cur.fetchall()
+        return render_template('kolkata.html', userDetails=userDetails)
 
 if __name__=='__main__':
     app.run(debug=True)
