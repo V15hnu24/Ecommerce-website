@@ -8,18 +8,21 @@ mydb = mysql.connector.connect(host="localhost",user="root",passwd="vishnu7879",
 
 mycursor = mydb.cursor()
 
+''' 
+SET FOREIGN_KEY_CHECKS = 0;
+delete from product_table
+where product_id = 3 and type_id = (select type_id
+				from type_table
+                where name = 'bike');
 '''
-select customer_name, customer_mobile, count(*) as count
-from user_details
-where user_id in (select buyer_id
-				from sold_product)
-group by customer_name
-having count > 0
-order by count desc
-'''
+mycursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
+category = 'bike'
+num = '2'
+mycursor.execute(" delete from product_table where product_id = "+num+" and type_id = (select type_id from type_table where name = 'bike');")
+mycursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
 
-mycursor.execute("select customer_name, customer_mobile, count(*) as count from user_details where user_id in (select buyer_id from sold_product) group by customer_name having count > 0 order by count desc;")
+mycursor.execute("select product_id from product_table; where product_id = 3")
 
-result4 = mycursor.fetchall()
+result5 = mycursor.fetchall()
 
-print(result4)
+print(result5)

@@ -15,9 +15,7 @@
         {% for user in userDetails %}
         <tr>
             <td>{{user[0]}} </td>
-            <td>{{user[1]}} </td>
-          
-            
+            <td>{{user[1]}} </td>            
         </tr>
       {% endfor %}
     </tbody>
@@ -31,7 +29,6 @@
         columns: [
           {orderable: true,searchable: true},
           {orderable: true, searchable: false},
-         
         ],
       });
     });

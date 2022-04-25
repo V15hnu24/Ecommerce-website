@@ -27,3 +27,4 @@ mycursor.execute("select customer_name, customer_mobile, count(*) from user_deta
 result3 = mycursor.fetchall()
 
 print(result3)
+

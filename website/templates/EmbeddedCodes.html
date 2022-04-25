@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLX</title>
+</head>
+<style>
+    .flex-buttons{
+        display: flex;
+        justify-content: center;
+        padding: 3px;
+        width: 50px;
+        margin: 15px auto;
+    }
+    .output{
+        display: flex;
+        justify-content: center;
+        border: 20px red;
+        flex-basis: 100px;
+	    flex-grow: 0;
+	    flex-shrink: 0;
+        margin: 3px auto;
+        align-items: flex-start;
+    }
+    #Code{
+        
+        border-right: 30px red;
+    }
+</style>
+<body>
+    <div class="output">
+        <p id = "Code">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus necessitatibus excepturi temporibus alias, odio quam harum iste soluta at nihil dolorem vero nesciunt aspernatur distinctio eveniet libero ratione molestiae repellendus.</p>
+        <p id = "Output">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates aut a nesciunt illum quis fugit voluptatibus porro quibusdam laboriosam eos.</p>
+    </div>
+    <div class="flex-buttons">
+        <button onclick = "change1()" type="button" id ="1">1 </button>
+        <button onclick = "change2()" type="button" id ="2">2 </button>
+        <button onclick = "change3()" type="button" id ="3">3 </button>
+        <button onclick = "change4()" type="button" id="4">4 </button>
+        <button onclick = "change5()" type="button" id="5">5 </button>
+    </div>
+
+<script>
+
+    function change1(){
+        document.getElementById("Code").innerHTML = "select state_name, count(*) as count <br> from area_table <br> where area_id in (select city_code <br> from product_table) <br> GROUP BY state_name <br> order by count(*) DESC";
+
+        document.getElementById("Output").innerHTML = "[('Tamil Nadu', 3173), ('Kerala', 257), ('Karnataka', 197), ('Pondicherry', 5)]";
+    }
+    function change2(){
+        document.getElementById("Code").innerHTML = "drop table statewise_products; <br> create table statewise_products( <br> state_code	integer not null AUTO_INCREMENT, <br> state varchar(125), <br> total_products integer <br>,primary key (state_code));";
+
+        document.getElementById("Output").innerHTML = " Created New table, inserted values and fetched them <br> [('Tamil Nadu', 3173), ('Kerala', 257), ('Karnataka', 197), ('Pondicherry', 5)]";
+    }   
+    function change3(){
+        document.getElementById("Code").innerHTML = "select customer_name, customer_mobile, count(*) <br> from user_details <br> where user_id in (select seller_id <br>from product_table <br>where product_id in ( select product_id <br>						  from sold_product)<br>)<br>group by customer_name<br>having count(*) > 0 <br>order by customer_name";
+
+        document.getElementById("Output").innerHTML = "[('Aamir mumtaz', '9022599532', 1), ('ANKUR NAMDEO', '9764000754', 1), ('Antik Kamdar', '9833042396', 1), ('deepak manjreka', '9920066636', 1), ('Gokul Kardile', '9766044896', 1), ('MICHAEL MASCARE', '9969604866', 1), ('MONISH DAS', '9702542398', 1), ('Nagaraj Sastry', '9223443742', 1), ('PRAMIL GUPTA', '9422516655', 1), ('RAJ BARUAH', '9654494005', 1), ('RAJGOPAL TIWADI', '9423068871', 1), ('ravi shankar', '8097711605', 1), ('Ronak Vora Vora', '9322526800', 1), ('santosh suryawa', '9981240422', 1), ('SANTOSHKUMAR SI', '8108134660', 1), ('shraddhanand mo', '9899259924', 1), ('SHREYAS SHIRGUP', '9922273474', 1), ('VINOD RANA', '9923108386', 1), ('Yogesh Gadgil', '9881472724', 1)]";
+    }    
+    function change4(){
+        document.getElementById("Code").innerHTML = "select customer_name, customer_mobile, count(*) as count <br> from user_details<br>where user_id in (select buyer_id<br>from sold_product)<br>group by customer_name<br>having count > 0<br>order by count desc";
+
+        document.getElementById("Output").innerHTML = "[('Ravindra Chavan', '9223222881', 1), ('satyendra sahay', '9422025256', 1), ('KAMLESH SHAH', '9322261160', 1), ('VIJAY KSHIRSAGA', '9922435394', 1), ('PRAVEEN GUPTA', '9867614657', 1), ('RAHUL JOSHI', '9775551729', 1), ('shraddhanand mo', '9899259924', 1), ('Rishi Mehra', '9820504020', 1), ('MNAOJ SAWANT', '9820004653', 1), ('sham sonar', '9890404334', 1), ('AVINASH KOTHARI', '9920624927', 1), ('vijay kumar', '9820014715', 1), ('CHETAN CHINTALW', '9922901622', 1), ('mahesh Deshpand', '9673338041', 1), ('Rubecca Hasan', '9021429329', 1), ('MONISH DAS', '9702542398', 1), ('supreet singh', '9920011797', 1), ('UMER PATHAN', '9224277469', 1), ('Vishwanath Mait', '9822281329', 1)]";
+    }    
+    function change5(){
+        document.getElementById("Code").innerHTML = "SET FOREIGN_KEY_CHECKS = 0;<br>delete from product_table<br>where product_id = 3 and type_id = (select type_id<br>		from type_table<br>        where name = 'bike');";
+
+        document.getElementById("Output").innerHTML = "[(1,), (4,), (5,), (6,), (7,), (8,), (9,), (10,), (11,), (12,), (13,), (14,), (15,), (16,), (17,), (18,), (19,), (20,), (21,), (22,), (23,), (24,), (25,), (26,), (27,), (28,), (29,), (30,), (31,), (32,), (33,), (34,), (35,), (36,), (37,), (38,), (39,), (40,), (41,), (42,), (43,), (44,), (45,), (46,), (47,), (48,), (49,), (50,), (51,), (52,), (53,), (55,), (56,), (57,), (58,), (59,), (60,), (61,), (62,), (63,), (64,), (65,), (66,), (67,), (68,), (69,), (70,), (71,), (72,), (73,), (74,), (75,), (76,), (77,), (78,), (79,), (80,), (81,), (82,), (83,), (84,), (85,), (86,), (87,), (88,), (89,), (90,), (91,), (92,), (93,), (94,), (95,), (96,), (97,), (98,), (99,), (100,), (101,), (102,), (103,), (104,), (105,), (106,), (107,), (108,)";
+    }
+
+</script>
+</body>
+</html>

@@ -12,8 +12,8 @@ app = Flask(__name__)
 # app.config['MYSQL_DB']=`db['mysql_db']
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='7061'
-app.config['MYSQL_DB']='olx_final'
+app.config['MYSQL_PASSWORD']='vishnu7879'
+app.config['MYSQL_DB']='online_selling'
 
 mysql=MySQL(app)
 
@@ -112,6 +112,14 @@ def soldAmountAndBoughtAmount():
     if resultVAlue>0:
         userDetails=cur.fetchall()
         return render_template('soldAmountAndBoughtAmount.html', userDetails=userDetails)
+
+@app.route('/EmbeddedCodes')
+def EmbeddedCodes():
+    cur=mysql.connection.cursor()
+    resultVAlue=cur.execute("select sender,receiver,chat,time from( select U.customer_name as sender, U1.customer_name as receiver, C.chat, C.time from user_details U join (select sender_id,chat,time,receiver_id,date from chat_table where sender_id=1 and receiver_id=9 and date='2020-05-03') as C on U.user_id = C.sender_id join user_details U1 on U1.user_id = C.receiver_id union all select U.customer_name as sender, U1.customer_name as receiver, C.chat, C.time from user_details U join (select sender_id,chat,time,receiver_id,date from chat_table where sender_id=9 and receiver_id=1 and date='2020-05-03') as C on U.user_id = C.sender_id join user_details U1 on U1.user_id = C.receiver_id ) as Temp Order by Temp.time ")
+    if resultVAlue>0:
+        userDetails=cur.fetchall()
+        return render_template('EmbeddedCodes.html', userDetails=userDetails)  
 
 @app.route('/ChatOfUSer9And1ondate')
 def ChatOfUSer9And1ondate():
