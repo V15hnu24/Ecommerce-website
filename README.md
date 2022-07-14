@@ -1,6 +1,4 @@
-# OLX
-
-This is clone of online buying and selling system.
+# Ecommerce-website
 
 Fully functional backend and dababase for an Ecommerce website using using RDBMS, MYSQL, Flask, HTML, CSS, JavaScript. 
 
@@ -12,7 +10,7 @@ Fully functional backend and dababase for an Ecommerce website using using RDBMS
 
 ![image](https://user-images.githubusercontent.com/75430163/178966640-c6d4c7c7-a6b5-405b-a190-927344665e55.png)
 
-Developers:-
+Developers:- <br />
 Vishnu Vardhan Website: https://my-project-2168c.web.app/ LinkedIn: https://www.linkedin.com/in/vish24vishnu/  <br />
 Varun Parashar LinkedIn: https://www.linkedin.com/in/varun-parashar-aa3516218 <br />
 Samriddh Singh Website: https://samriddhsingh123-2690f.web.app/ LinkedIn: https://www.linkedin.com/in/samriddhsingh123/ <br />
